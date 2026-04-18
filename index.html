@@ -45,43 +45,36 @@
     
     <a href="#offres" class="cta">VOIR LES OFFRES</a>
     
-  </section>
-  
   <section class="offres" id="offres">
-    <div class="carte">
-      <h2>Basic</h2>
-      <p>Site simple</p>
-      <p>100€</p>
-      <button onclick="choisirOffre('Basic', 100)" >Choisir</button>
-      <p class="selection"></p>
-    </div>
+  <div class="carte">
+    <h2>Basic</h2>
+    <p>Site simple</p>
+    <p>100€</p>
+    <button onclick="choisirOffre('Basic', 100)">Choisir</button>
+  </div>
 
-    <section class="panier">
+  <div class="carte">
+    <h2>Pro</h2>
+    <p>Site moderne</p>
+    <p>300€</p>
+    <button onclick="choisirOffre('Pro', 300)">Choisir</button>
+  </div>
+
+  <div class="carte">
+    <h2>Premium</h2>
+    <p>Site complet</p>
+    <p>600€</p>
+    <button onclick="choisirOffre('Premium', 600)">Choisir</button>
+  </div>
+</section>
+
+<!-- ✅ PANIER ICI -->
+<section class="panier">
   <h2>🛒 Panier</h2>
-
   <div id="panier-items"></div>
-
   <p id="total"></p>
-
   <button onclick="viderPanier()">Vider le panier</button>
-    </section>
-    
-    <div class="carte">
-      <h2>Pro</h2>
-      <p>Site moderne </p>
-      <p>300€</p>
-      <button onclick ="choisirOffre('Pro', 300)">Choisir</button>
-      <p class="selection"></p>
-    </div>
-    
-    <div class="carte">
-      <h2>Site premium</h2>
-      <p>Site complet</p>
-      <p>600€</p>
-      <button onclick="choisirOffre('Premium', 600)">Choisir</button>
-      <p class="selection"></p>
-    </div>
-  </section>
+</section>
   
   <section id="ap">
    <p>Ce site sera mis en vente dès la fin de sa création.</p> 
