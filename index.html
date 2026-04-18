@@ -1,53 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  
   <meta charset="UTF-8">
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
   <meta name="description" content="Création de sites web professionnels à petit prix. Rapide, moderne et efficace.">
-  
-  <title>
-    site pro
-  </title>
-  
+  <title>Site pro</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  
-  <header>
-   <h1>
-    ACHETEZ VOTRE SITE WEB 
-   </h1>
-  </header>
-  
-  <nav>
-    <a href="#">Accueil</a>
-    
-    <a href="mailto:mavemarci@gmail.com">Contact </a>
-    
-    <a href="#ap">À propos</a>
-  </nav>
-  
-  <section>
-     <p>Achetez votre site Web à petit prix.</p>
-  
-   <img src="https://marcimave.github.io/images/1-1-1440x780.jpg" alt="page_d'atterrissage">
-  </section>
-  
-  <section class="hero">
-    
-    <h2>Créez votre site professionnel dès aujourd'hui</h2>
-    
-    <p>Rapide,  moderne et accessible à tous.</p>
-    
-    <a href="#offres" class="cta">VOIR LES OFFRES</a>
-    
-  </section>
-    
-  <section class="offres" id="offres">
+
+<header>
+  <h1>ACHETEZ VOTRE SITE WEB</h1>
+</header>
+
+<nav>
+  <a href="#">Accueil</a>
+  <a href="mailto:mavemarci@gmail.com">Contact</a>
+  <a href="#ap">À propos</a>
+</nav>
+
+<section>
+  <p>Achetez votre site Web à petit prix.</p>
+  <img src="https://marcimave.github.io/images/1-1-1440x780.jpg" alt="Page d’atterrissage">
+</section>
+
+<section class="hero">
+  <h2>Créez votre site professionnel dès aujourd'hui</h2>
+  <p>Rapide, moderne et accessible à tous.</p>
+  <a href="#offres" class="cta">VOIR LES OFFRES</a>
+</section>
+
+<section class="offres" id="offres">
+
   <div class="carte">
     <h2>Basic</h2>
     <p>Site simple</p>
@@ -68,55 +53,48 @@
     <p>600€</p>
     <button onclick="choisirOffre('Premium', 600)">Choisir</button>
   </div>
+
 </section>
 
-<!-- ✅ PANIER ICI -->
+<!-- PANIER -->
 <section class="panier">
   <h2>🛒 Panier</h2>
 
   <div id="panier-items"></div>
-
   <p id="total"></p>
 
   <button onclick="payer()" class="btn-payer">💳 Payer maintenant</button>
-
   <button onclick="viderPanier()">Vider le panier</button>
 </section>
-  
-  <section id="ap">
-   <p>Ce site sera mis en vente dès la fin de sa création.</p> 
-  </section>
-  
-  <a href="#" class="cta" onclick="commander()">Commander maintenant</a>
 
-  <button onclick="payer()">Payer maintenant</button>
-  
-  <section class="contact">
-    <h2>Contactez-nous</h2>
-    
-    <form id="formulaire">
-      
-      <label>nom</label>
-      
-      <input type="text" id="nom" placeholder="votre nom" required>
-      
-      <label>email</label>
-      
-      <input type="email" id="email" placeholder="votre email" required>
-      
-      <label>message</label>
-      <textarea id="message" placeholder="votre message" required></textarea>
-      
-      <button type="submit">Envoyer</button>
-    </form>
-    
-    <p id="confirmation"></p>
-  </section>
-  
-  <footer>
-  	<p>&copy; 2026- Site Pro</p>
-  </footer>
-  <script src="ǰs/script.js"></script>
+<section id="ap">
+  <p>Ce site sera mis en vente dès la fin de sa création.</p>
+</section>
+
+<section class="contact">
+  <h2>Contactez-nous</h2>
+
+  <form id="formulaire">
+    <label for="nom">Nom</label>
+    <input type="text" id="nom" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" required></textarea>
+
+    <button type="submit">Envoyer</button>
+  </form>
+
+  <p id="confirmation"></p>
+</section>
+
+<footer>
+  <p>&copy; 2026 - Site Pro</p>
+</footer>
+
+<script src="js/script.js"></script>
+
 </body>
-
 </html>
