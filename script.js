@@ -93,3 +93,9 @@ window.onload = () => {
     afficherPanier();
   }
 };
+
+if (panier.length === 0) {
+  container.innerHTML = "<p>Panier vide</p>";
+  totalElement.textContent = "";
+  return;
+}
