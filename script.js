@@ -91,7 +91,10 @@ window.onload = () => {
   if (saved) {
     panier = JSON.parse(saved);
     afficherPanier();
-  }
+    const btnPayer = document.querySelector(".btn-payer");
+
+btnPayer.disabled = panier.length === 0;
+  
 };
 
 if (panier.length === 0) {
