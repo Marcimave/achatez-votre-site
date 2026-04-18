@@ -1,3 +1,6 @@
+// =====================
+// FORMULAIRE
+// =====================
 const form = document.getElementById("formulaire");
 const confirmation = document.getElementById("confirmation");
 
@@ -5,9 +8,6 @@ const nomInput = document.getElementById("nom");
 const emailInput = document.getElementById("email");
 const messageInput = document.getElementById("message");
 
-// =====================
-// FORMULAIRE
-// =====================
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -26,6 +26,7 @@ form.addEventListener("submit", (e) => {
 
   form.reset();
 });
+
 
 // =====================
 // PANIER PRO
@@ -48,8 +49,17 @@ function choisirOffre(nom, prix) {
 function afficherPanier() {
   const container = document.getElementById("panier-items");
   const totalElement = document.getElementById("total");
+  const btnPayer = document.querySelector(".btn-payer");
 
   container.innerHTML = "";
+
+  if (panier.length === 0) {
+    container.innerHTML = "<p>Panier vide</p>";
+    totalElement.textContent = "";
+    if (btnPayer) btnPayer.disabled = true;
+    return;
+  }
+
   let total = 0;
 
   panier.forEach((item, index) => {
@@ -64,6 +74,8 @@ function afficherPanier() {
   });
 
   totalElement.textContent = "Total : " + total + "€";
+
+  if (btnPayer) btnPayer.disabled = false;
 }
 
 function supprimerProduit(index) {
@@ -82,53 +94,33 @@ function sauvegarderPanier() {
   localStorage.setItem("panier", JSON.stringify(panier));
 }
 
+
 // =====================
-// CHARGEMENT
+// PAIEMENT
 // =====================
-window.onload = () => {
+function payer() {
+  if (panier.length === 0) {
+    alert("Votre panier est vide");
+    return;
+  }
+
+  const total = panier.reduce((sum, item) => sum + item.prix * item.quantite, 0);
+
+  alert("Paiement simulé de " + total + "€");
+
+  viderPanier();
+}
+
+
+// =====================
+// CHARGEMENT PAGE
+// =====================
+document.addEventListener("DOMContentLoaded", () => {
   const saved = localStorage.getItem("panier");
 
   if (saved) {
     panier = JSON.parse(saved);
-    afficherPanier();
-    const btnPayer = document.querySelector(".btn-payer");
-
-btnPayer.disabled = panier.length === 0;
-  
-};
-
-if (panier.length === 0) {
-  container.innerHTML = "<p>Panier vide</p>";
-  totalElement.textContent = "";
-  return;
-}
-
-function payer() {
-  if (panier.length === 0) {
-    alert("Votre panier est vide");
-    return;
   }
 
-  //≈=≈=≈===≈≈=====≈≈===≈===
-  // PAYEMENT 
-  //=≈≈====≈≈≈≈===≈≈========
-
-  const total = panier.reduce((sum, item) => sum + item.prix * item.quantite, 0);
-
-  alert("Paiement simulé de " + total + "€");
-
-  viderPanier();
-}
-
-function payer() {
-  if (panier.length === 0) {
-    alert("Votre panier est vide");
-    return;
-  }
-
-  const total = panier.reduce((sum, item) => sum + item.prix * item.quantite, 0);
-
-  alert("Paiement simulé de " + total + "€");
-
-  viderPanier();
-}
+  afficherPanier();
+});
