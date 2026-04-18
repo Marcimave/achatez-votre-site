@@ -148,3 +148,36 @@ async function payer() {
     sessionId: session.id
   });
 }
+
+const express = require("express");
+const stripe = require("stripe")("TA_SECRET_KEY_ICI");
+const app = express();
+
+app.use(express.json());
+
+app.post("/create-checkout-session", async (req, res) => {
+  const panier = req.body.panier;
+
+  const line_items = panier.map(item => ({
+    price_data: {
+      currency: "eur",
+      product_data: {
+        name: item.nom
+      },
+      unit_amount: item.prix * 100
+    },
+    quantity: item.quantite
+  }));
+
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    line_items,
+    mode: "payment",
+    success_url: "https://ton-site.com/success.html",
+    cancel_url: "https://ton-site.com/cancel.html"
+  });
+
+  res.json({ id: session.id });
+});
+
+app.listen(3000, () => console.log("Serveur lancé"));
