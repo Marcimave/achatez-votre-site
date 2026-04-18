@@ -6,7 +6,8 @@
   <meta name="description" content="Création de sites web professionnels à petit prix. Rapide, moderne et efficace.">
   <title>Site pro</title>
   <link rel="stylesheet" href="style.css">
-</head>
+  <script src="https://js.stripe.com/v3/"></script>
+ </head>
 
 <body>
 
@@ -63,7 +64,9 @@
   <div id="panier-items"></div>
   <p id="total"></p>
 
-  <button onclick="payer()" class="btn-payer">💳 Payer maintenant</button>
+  <button onclick="payer()" class="btn-payer">
+  💳 Payer maintenant
+  </button>
   <button onclick="viderPanier()">Vider le panier</button>
 </section>
 
