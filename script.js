@@ -124,3 +124,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   afficherPanier();
 });
+
+const stripe = Stripe("TA_PUBLIC_KEY_ICI");
+
+async function payer() {
+  if (panier.length === 0) {
+    alert("Votre panier est vide");
+    return;
+  }
+
+  // appel serveur
+  const response = await fetch("https://ton-serveur.com/create-checkout-session", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ panier })
+  });
+
+  const session = await response.json();
+
+  stripe.redirectToCheckout({
+    sessionId: session.id
+  });
+}
