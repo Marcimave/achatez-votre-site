@@ -28,8 +28,72 @@ form.addEventListener("submit", (e) => {
 });
 
 // CHOIX OFFRE
-function choisirOffre(nom, prix, element) {
-  offreChoisie = { nom, prix };
+let panier = [];
+
+// AJOUT AU PANIER
+function choisirOffre(nom, prix) {
+  const existant = panier.find(item => item.nom === nom);
+
+  if (existant) {
+    existant.quantite++;
+  } else {
+    panier.push({ nom, prix, quantite: 1 });
+  }
+
+  sauvegarderPanier();
+  afficherPanier();
+}
+
+// AFFICHAGE PANIER
+function afficherPanier() {
+  const container = document.getElementById("panier-items");
+  const totalElement = document.getElementById("total");
+
+  container.innerHTML = "";
+  let total = 0;
+
+  panier.forEach((item, index) => {
+    total += item.prix * item.quantite;
+
+    container.innerHTML += `
+      <p>
+        ${item.nom} - ${item.prix}€ x ${item.quantite}
+        <button onclick="supprimerProduit(${index})">❌</button>
+      </p>
+    `;
+  });
+
+  totalElement.textContent = "Total : " + total + "€";
+}
+
+// SUPPRIMER PRODUIT
+function supprimerProduit(index) {
+  panier.splice(index, 1);
+  sauvegarderPanier();
+  afficherPanier();
+}
+
+// VIDER PANIER
+function viderPanier() {
+  panier = [];
+  sauvegarderPanier();
+  afficherPanier();
+}
+
+// SAUVEGARDE
+function sauvegarderPanier() {
+  localStorage.setItem("panier", JSON.stringify(panier));
+}
+
+// CHARGEMENT PAGE
+window.onload = function () {
+  const saved = localStorage.getItem("panier");
+
+  if (saved) {
+    panier = JSON.parse(saved);
+    afficherPanier();
+  }
+};
 
   // effet visuel
   document.querySelectorAll(".carte").forEach(c => c.classList.remove("active"));
